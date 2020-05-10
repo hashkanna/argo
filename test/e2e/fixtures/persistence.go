@@ -29,6 +29,9 @@ func newPersistence(kubeClient kubernetes.Interface) *Persistence {
 		if persistence.MySQL != nil {
 			persistence.MySQL.Host = "localhost"
 		}
+		if persistence.SQLServer != nil {
+			persistence.SQLServer.Host = "localhost"
+		}
 		session, tableName, err := sqldb.CreateDBSession(kubeClient, Namespace, persistence)
 		if err != nil {
 			panic(err)

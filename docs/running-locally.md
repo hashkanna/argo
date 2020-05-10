@@ -23,6 +23,7 @@ Add to /etc/hosts:
     127.0.0.1 minio
     127.0.0.1 postgres
     127.0.0.1 mysql
+    127.0.0.1 mssql
 
 To install into the “argo” namespace of your cluster: Argo, MinIO (for saving artifacts and logs) and Postgres (for offloading or archiving):
 
@@ -31,6 +32,10 @@ To install into the “argo” namespace of your cluster: Argo, MinIO (for savin
 If you prefer MySQL:
 
 	make start DB=mysql
+
+If you prefer MS SQL:
+
+	make start DB=mssql
 
 You’ll now have
 
@@ -41,6 +46,7 @@ Either:
 
 * Postgres on  http://localhost:5432, run `make postgres-cli` to access.
 * MySQL on  http://localhost:3306, run `make mysql-cli` to access.
+* MS SQL on  http://localhost:1433, run `make mssql-cli` to access.
 
 You need the token to access the CLI or UI:
 

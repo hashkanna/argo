@@ -129,7 +129,7 @@ func (wdc *nodeOffloadRepo) Save(uid, namespace string, nodes wfv1.Nodes) (strin
 }
 
 func isDuplicateKeyError(err error) bool {
-	// postgres
+	// postgres and mssql
 	if strings.Contains(err.Error(), "duplicate key") {
 		return true
 	}

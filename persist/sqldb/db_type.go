@@ -10,8 +10,9 @@ import (
 type dbType string
 
 const (
-	MySQL    dbType = "mysql"
-	Postgres dbType = "postgres"
+	MySQL     dbType = "mysql"
+	Postgres  dbType = "postgres"
+	SQLServer dbType = "mssql"
 )
 
 func dbTypeFor(session db.Database) dbType {

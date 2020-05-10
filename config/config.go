@@ -138,6 +138,7 @@ type PersistConfig struct {
 	ConnectionPool *ConnectionPool   `json:"connectionPool"`
 	PostgreSQL     *PostgreSQLConfig `json:"postgresql,omitempty"`
 	MySQL          *MySQLConfig      `json:"mysql,omitempty"`
+	SQLServer      *SQLServerConfig  `json:"sqlserver,omitempty"`
 }
 
 func (c PersistConfig) GetClusterName() string {
@@ -170,6 +171,17 @@ type MySQLConfig struct {
 	Options        map[string]string       `json:"options"`
 	UsernameSecret apiv1.SecretKeySelector `json:"userNameSecret"`
 	PasswordSecret apiv1.SecretKeySelector `json:"passwordSecret"`
+}
+
+type SQLServerConfig struct {
+	Host           string                  `json:"host"`
+	Port           string                  `json:"port"`
+	Database       string                  `json:"database"`
+	TableName      string                  `json:"tableName"`
+	UsernameSecret apiv1.SecretKeySelector `json:"userNameSecret"`
+	PasswordSecret apiv1.SecretKeySelector `json:"passwordSecret"`
+	SSL            bool                    `json:"ssl,omitempty"`
+	SSLMode        string                  `json:"sslMode,omitempty"`
 }
 
 // S3ArtifactRepository defines the controller configuration for an S3 artifact repository

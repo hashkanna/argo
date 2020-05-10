@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mssql
+  labels:
+    app: mssql
+spec:
+  selector:
+    matchLabels:
+      app: mssql
+  template:
+    metadata:
+      name: mssql
+      labels:
+        app: mssql
+    spec:
+      containers:
+        - name: main
+          image: mcr.microsoft.com/mssql/server:2019-CU4-ubuntu-16.04
+          env:
+            - name: MSSQL_PASSWORD
+              value: password
+          ports:
+            - containerPort: 1433
+          readinessProbe:
+            exec:
+              command: ["sqlcmd", "-U", "mssql", "-c", "SELECT 1"]
+            initialDelaySeconds: 15
+            timeoutSeconds: 2
+      nodeSelector:
+        kubernetes.io/os: linux

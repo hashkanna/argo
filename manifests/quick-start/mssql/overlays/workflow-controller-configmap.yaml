@@ -1,0 +1,23 @@
+apiVersion: v1
+data:
+  persistence: |
+    connectionPool:
+      maxIdleConns: 100
+      maxOpenConns: 0
+    nodeStatusOffLoad: true
+    archive: true
+    archiveTTL: 7d
+    mssql:
+      host: mssql
+      port: 1433
+      database: mssql
+      tableName: argo_workflows
+      userNameSecret:
+        name: argo-mssql-config
+        key: username
+      passwordSecret:
+        name: argo-mssql-config
+        key: password
+kind: ConfigMap
+metadata:
+  name: workflow-controller-configmap

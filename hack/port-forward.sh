@@ -31,3 +31,8 @@ mysql=$(kubectl -n argo get pod -l app=mysql -o name)
 if [[ "$mysql" != "" ]]; then
   pf MySQL "$mysql" 3306
 fi
+
+mssql=$(kubectl -n argo get pod -l app=mssql -o name)
+if [[ "$mssql" != "" ]]; then
+  pf mssql "$mssql" 1433
+fi
