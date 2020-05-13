@@ -21,12 +21,12 @@ spec:
             - name: SA_PASSWORD
               value: P@ssw0rd
             - name: ACCEPT_EULA
-              value: Y
+              value: "Y"
           ports:
             - containerPort: 1433
           readinessProbe:
             exec:
-              command: ["sqlcmd", "-U", "mssql", "-c", "SELECT 1"]
+              command: ["/opt/mssql-tools/bin/sqlcmd", "-U", "sa", "-P", "P@ssw0rd", "-Q", "SELECT 1", "GO"]
             initialDelaySeconds: 15
             timeoutSeconds: 2
       nodeSelector:
